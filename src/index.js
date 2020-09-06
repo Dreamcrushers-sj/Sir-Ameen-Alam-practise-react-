@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Routers from './Routers';
 import * as serviceWorker from './serviceWorker';
 
+// import Reducer
+import Reducers from './Store/Reducers'
+
+// Import React Redux Provider
+import { Provider } from 'react-redux'
+
+// import Store and Create Store
+import { createStore } from 'redux'
+
+// import middleware
+import Middleware from './store/Middleware'
+
+// passs Redecer in store
+const store = createStore(Reducers, Middleware)
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+   <Provider store={store}>
+    <Routers />
+    </Provider>,
   document.getElementById('root')
 );
 
